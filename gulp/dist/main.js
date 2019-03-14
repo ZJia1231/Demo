@@ -1,0 +1,1 @@
+const a=1;let b=2;console.log("1"),console.log("2");

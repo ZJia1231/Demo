@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Storage</title>
+</head>
+<body>
+    
+<script>
+    function setCookie(key,val) {
+        document.cookie = key +'=' + val;
+    };
+    setCookie('name','zj');
+    document.cookie = 'pwd' + '=' + '123456';
+    // console.log(document.cookie)
+    var ck = document.cookie.split(';');
+    var date = new Date().toUTCString();
+    function deleteCookie(key,val,date) {
+        document.cookie = key + '=' + val + ';expires=' + date;
+    }
+    deleteCookie('name','zj',date);
+    console.log(document.cookie);
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+	<input type="text" id="result">
+	<script>
+setTimeout(function(a,b,c){
+	console.log(a);//b
+ 	console.log(b);//b
+ 	console.log(c);//c
+},0,3,4,5);
+setTimeout(function(){ while(true){};},100);
+setTimeout(function(){ alert('浣犲ソ!');},200);
+function a () {
+   		setTimeout(function() {
+alert('1');
+};
+a();
+
+	console.log(`string text line 1   \n 
+string text line 2`);
+function Person() {
+	Person.prototype.name = "N";
+	Person.prototype.age = 29;
+	Person.prototype.job = 'student	';
+	Person.prototype.sayName = function () {
+		alert(this.name);
+;
+}
+var person1 = new Person();
+person1.sayName();
+var person2 = new Person();
+person2.sayName();
+console.log(person1.sayName === person2.sayName);
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts-en.common.js"></script>
+    <style>
+        #box {
+            margin: 0 auto;
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var box = document.querySelector('#box');
+        var myChart = echarts.init(box);
+        var option = {
+            title:{
+                text:'demo'
+            },
+            tooltip:{},
+            legend:{
+                data:['销量']
+            },
+            xAxis:{
+                data:['衬衫','羊毛衫','学纺衫','裤子']
+            },
+            yAxis:{},
+            series:[{
+                name:'销量',
+                type:'bar',
+                data:[5,20,36,10,10,20]
+            }]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

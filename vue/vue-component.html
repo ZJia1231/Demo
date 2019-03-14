@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <div id="app">
+            <panda></panda>
+            <component :is='who'></component>
+            <button @click='change'>change</button>
+        </div>
+    <script>
+        var componentA = {
+            template:`<div>i am fineA</div>`
+        }
+        var componentB = {
+            template:`<div>i am fineB</div>`
+        }
+        var componentC = {
+            template:`<div>i am fineC</div>`
+        }
+        var city = {
+            template: `<div style="color:red">panda from sichuan</div>`
+        }
+        var panda = {
+            template : `<div>panda from china<city></city></div>`,
+            components: {
+                'city': city,
+            }
+        }
+        var app =new Vue({
+            el: '#app',
+            data: {
+                who: 'componentA',
+            },
+            components: {
+                'panda': panda,
+                'componentA': componentA,
+                'componentB': componentB,
+                'componentC': componentC,
+            },
+            methods: {
+                change: function() {
+                    switch (this.who)
+                    {
+                        case 'componentA':
+                            this.who = 'componentB';
+                            break;
+                        case 'componentB':
+                            this.who = 'componentC';
+                            break;
+                        case 'componentC':
+                            this.who = 'componentA';
+                            break;
+                    }
+                }
+            }
+        });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="showData()">查找数据</button>
+    <div id="box"></div>
+    <br/>
+    <form action="http://localhost:3000/insert" method='POST'>
+        <input type="text" name="name">
+        <br/>
+        <br/>
+        <input type="text" name="age">
+        <br/>
+        <br/>
+        <input type="submit" value="插入新的数据">
+    </form>
+    <input type="text" id="del-name" placeholder="要删除的name">
+    <input type="button" value="删除数据" id='del-btn'>
+    <script>
+        let showData = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://localhost:3000/data', true);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    let data = JSON.parse(xhr.responseText);
+                    let temp = '<ul>';
+                    data = data.list;
+                    for (let i = 0; i < data.length; i++) {
+
+                        temp += `<li>name:${data[i].name}<br/>age:${data[i].age}</li>`;
+                    }
+                    temp += '</ul>';
+                    document.getElementById('box').innerHTML = temp;
+                }
+            }
+        }
+        document.getElementById('del-btn').onclick = function () {
+            let val = document.getElementById('del-name').value;
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:3000/delete', true);
+            xhr.send(JSON.stringify({ name: val }));
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    eval(xhr.responseText)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

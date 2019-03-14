@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+<body>
+    <div id="app">
+        <p>今日温度：{{wendu}}</p>
+        <p>穿衣指南：{{chuan}}</p>
+        <button @click='up'>up</button>
+        <button @click='down'>down</button>
+    </div>
+<script>
+    new Vue({
+        el:'#app',
+        data: {
+            wendu:14,
+            chuan:'clothes'
+        },
+        methods: {
+            up: function() {
+                this.wendu ++;
+            },
+            down: function() {
+                this.wendu--;
+            }
+        },
+        watbch: {
+            wendu: function(newVal,oldVal) {
+                if (newVal>20) {
+                    this.chuan = 'less clothes';
+                }
+                else if (newVal<0) {
+                    this.chuan = 'more clothes';
+                }
+                else {
+                    this.chuan = 'clothes';
+                }
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

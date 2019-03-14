@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = {
+            "count": "12==",
+            "data": [
+                [1537409340, 6280.01, 6280.01, 6274, 6274, 24094],
+                [1537409520, 6274, 6277.58, 6270.01, 6273.58, 30912],
+                [1537583580, 6688.33, 6698, 6686.85, 6697.99, 17794],
+                [1537583760, 6698.09, 6702.29, 6692, 6693.66, 15006],
+                [1537589160, 6691.45, 6691.45, 6681.83, 6681.84, 3646]
+            ]
+        }
+
+        var calc = function (obj) {
+            // 取得data中第二项的所有数据
+            var data = obj.data.map(function (item) {
+                return item[1];
+            })
+            // 求总和
+            var sum = data.reduce(function (prev, curr) {
+                return prev + curr;
+            })
+            // 总和平均
+            sum = sum / data.length;
+            // 求后三位总和
+            var part = data.slice(-3).reduce(function (prev, curr) {
+                return prev + curr;
+            });
+            // 后三位总和平均
+            part = part / 3;
+            return part / sum;
+        }
+        var result = calc(a);
+
+        alert(result)
+    </script>
+</body>
+
+</html>

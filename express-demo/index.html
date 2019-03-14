@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 30px;
+            left: 100px;
+        }
+    </style>
+    <!-- <script src="client.socket.js"></script> -->
+    <script src="https://cdn.bootcss.com/socket.io/2.0.4/socket.io.js"></script>
+    <script>
+        var io = require('socket.io');
+        var scoket = io.connect('http://localhost:8888');
+        
+        // var socket = new WebSocket("http://localhost:8888");
+        //socket代表的是当前服务端和客户端建立的对象（TCP）
+            //socket.sockets对象监听connection事件，只要有一个客户端进行了
+            //socket对象连接，就会执行function函数内容
+            socket.sockets.on('connection', function () {
+
+                //这里写wsocket连接后的事件
+                //socket基本方法：
+                socket.emit(event1, data);//向客户端发送event1事件，并传输data
+                socket.on(event2, function (data) {
+                    //接收客户端发来的event2事件，并得到传输来data
+                    //根据事件名和data数据进行下一步的操作
+                });
+
+                socket.broadcast.emit(event3, data);
+                //向所有客户端广播event1事件，并传输data
+
+            });
+        window.onload = function () {
+            var oBtn = document.getElementsByTagName('input')[0];
+            var scoket = null;
+            var oDiv = document.getElementById('div1');
+
+
+
+            oBtn.onclick = function () {
+                drag(oDiv);
+                scoket = io.connect('http://localhost:8888');
+                scoket.on('hello', function (data) {
+                    alert(data);
+                });
+                scoket.on('moveto', function (data) {
+
+                    var data = JSON.parse(data);
+                    var L = data.left;
+                    var T = data.top;
+                    oDiv.style.left = L + 'px';
+                    oDiv.style.top = T + 'px';
+                });
+
+                scoket.on('a', function (data) {
+                    //console.log(1);
+                    alert(data);
+                });
+
+                function drag(obj) {
+                    obj.onmousedown = function (ev) {
+                        var ev = ev || event;
+                        var disX = ev.clientX - obj.offsetLeft;
+                        var disY = ev.clientY - obj.offsetTop;
+                        document.onmousemove = function (ev) {
+                            var L = ev.clientX - disX;
+                            var T = ev.clientY - disY;
+                            obj.style.left = L + 'px';
+                            obj.style.top = T + 'px';
+                            scoket.emit('move', '{"left":' + oDiv.offsetLeft + ',"top":' + oDiv.offsetTop + '}');
+                        }
+                        document.onmouseup = function (ev) {
+                            document.onmousemove = document.onmouseup = null;
+
+                        }
+
+                        return false;
+
+                    }
+                }
+
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <h1>这里是主页</h1>
+    <input type="button" value="发送socket" />
+
+    <div id="div1"></div>
+</body>
+
+</html>

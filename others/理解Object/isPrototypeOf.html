@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function Person(name, age) {
+            if (name) {
+            this.name = name;
+            }
+            if (age) {
+            this.age = age;
+            }
+        }
+
+        Person.prototype.name = 'guest';
+        Person.prototype.age = '0';
+
+        Person.prototype.sayName = function () {
+            console.log(this.name || 'unknown');
+
+        }
+        const p1 = new Person('jack', '12')
+        const p2 = new Person('john', '18')
+        const p3 = new Person();
+        console.log(p1);
+        console.log(p2);
+        console.log(p3);
+        p1.sayName()
+        p2.sayName() 
+    </script>
+</body>
+
+</html>

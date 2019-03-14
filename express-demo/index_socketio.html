@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/socket.io/2.0.4/socket.io.js"></script>
+</head>
+<body>
+    <div id="chat">
+        <ul id='message'></ul>
+        <form id="form">
+            <input type="text" id="input" />
+            <button>send</button>
+        </form>
+    </div>
+<script>
+    window.onload = function () {
+        var socket = io.connect();
+    }
+</script>
+</body>
+</html>

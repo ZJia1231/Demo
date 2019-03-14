@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>Vue的生命周期</title>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{ msg }}</p>
+            <button v-on:click='fnDestroy'>Destroy it!</button>
+            <button v-on:click='changeMsg'>changeMsg</button>
+        </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data: {
+                msg:'hello world',
+            },
+            methods:{
+                fnDestroy:function() {
+                    this.$destroy();
+                },
+                changeMsg:function() {
+                    if (this.$data.msg!='666666') {
+                        this.$data.msg='666666';
+                        
+                    }
+                    else {
+                        this.$data.msg='hello world';
+                    }
+                    console.log(this.$data.msg);
+                }
+            },
+            beforeCreate:function() {
+                console.group('beforeCreated:');
+                console.log("%c%s", "color:red", "el     : " + this.$el); //undefined
+                console.log("%c%s", "color:red", "data   : " + this.$data); //undefined 
+                console.log("%c%s", "color:red", "msg    : " + this.msg)  
+                console.groupEnd('beforeCreated End');
+            },
+            created:function() {
+                console.group('created:');
+                console.log("%c%s", "color:red", "el     : " + this.$el); //undefined
+                console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化 
+                console.log(this.$data);
+                
+                console.log("%c%s", "color:red", "msg    : " + this.msg); //已被初始化
+                console.groupEnd('created End');
+            },
+            beforeMount:function() {
+                console.group('befortMount:');
+                console.log("%c%s", "color:red", "el     : " + this.$el); //已被初始化
+                console.log(this.$el);
+                console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化
+                console.log("%c%s", "color:red", "msg    : " + this.msg); //已被初始化 
+                console.groupEnd('befortMount End');
+            },
+            mounted:function() {
+                console.group('mounted:');
+                console.log("%c%s", "color:red", "el     : " + this.$el); //已被初始化
+                console.log(this.$el);
+                console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化
+                console.log("%c%s", "color:red", "msg    : " + this.msg); //已被初始化
+                console.groupEnd('mounted End');
+                this.$data.msg = 'Goodbye World';
+                // this.$destroy();            
+                // this.$data.msg = 'Hello again';
+            },
+            beforeUpdate:function() {
+                console.group('beforeUpdate:');
+                console.log("%c%s", "color:red", "el     : " + this.$el);
+                console.log(this.$el);
+                console.log("%c%s", "color:red", "data   : " + this.$data);
+                console.log("%c%s", "color:red", "msg    : " + this.msg); 
+                console.groupEnd('beforeUpdate End');
+            },
+            updated:function() {
+                console.group('updated:');
+                console.log("%c%s", "color:red", "el     : " + this.$el);
+                console.log(this.$el);
+                console.log("%c%s", "color:red", "data   : " + this.$data);
+                console.log("%c%s", "color:red", "msg    : " + this.msg);  
+                console.groupEnd('updated End');
+            },
+            beforeDestory:function() {
+                console.group('beforeDestroy:');
+                console.log("%c%s", "color:red", "el     : " + this.$el);
+                console.log(this.$el);
+                console.log("%c%s", "color:red", "data   : " + this.$data);
+                console.log("%c%s", "color:red", "msg    : " + this.msg); 
+                console.groupEnd('beforeDestory End');
+            },
+            destoryed:function() {
+                console.group('destroyed:');
+                console.log("%c%s", "color:red", "el     : " + this.$el);
+                console.log(this.$el);
+                console.log("%c%s", "color:red", "data   : " + this.$data);
+                console.log("%c%s", "color:red", "msg    : " + this.msg)
+                console.groupEnd('destoryed End');
+            }
+        })
+    </script>
+    </body>
+</html>

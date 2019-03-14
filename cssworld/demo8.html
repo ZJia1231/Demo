@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    img {
+        display: inline-block;
+        width: 500px;
+        height: 1000px;
+        color: transparent;
+        position: relative;
+    }
+    img:not([src]) {
+        visibility: hidden;
+    }
+    img::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0%, 0%, 0%, .5);
+        visibility: visible;
+    }
+    img::after {
+        width: 100%;
+        height: 24px;
+        font-size: 12px;
+        line-height: 24px;
+        content: '这有一张图片';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        color: #fff;
+        visibility: hidden;
+    }
+    img:hover::after {
+        visibility: visible;
+    }
+</style>
+<body>
+    <img alt="天空" data-src="1.jpg">
+    <p>
+        <button>设置src属性显示图片</button>
+    </p>
+<script>
+    var eleButton = document.querySelector('button'),
+            eleImg = document.querySelector('img');
+
+        if (eleButton && eleImg) {
+            var initValueButton = eleButton.innerHTML;
+            // 图片地址
+            var srcImage = eleImg.getAttribute('data-src');
+            // 移除该属性
+            eleImg.removeAttribute('data-src');
+            // 按钮点击事件
+            eleButton.addEventListener('click', function () {
+                if (this.innerHTML == initValueButton) {
+                    this.innerHTML = '移除src属性';
+                    // 图片显示
+                    eleImg.setAttribute('src', srcImage);
+                } else {
+                    this.innerHTML = initValueButton;
+                    // src属性移除
+                    eleImg.removeAttribute('src');
+                }
+            });
+        }
+</script>
+</body>
+</html>

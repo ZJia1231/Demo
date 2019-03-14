@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            overflow: scroll;
+            height: 500px;
+        }
+        ::-webkit-scrollbar {
+            /* 滚动条整体部分，其中的属性有width,height,background,border（就和一个块级元素一样）等。 */
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-button {
+            /* 滚动条两端的按钮。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。 */
+            display: none;
+        }
+        ::-webkit-scrollbar-thumb {
+            /* 滚动条里面可以拖动的那部分 */
+            background-color: #999;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track:vertical {
+            /* 外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。 */
+            background: linear-gradient(rgba(255, 0, 0, 0.5),rgba(255, 145, 0, 0.5),rgba(255, 238, 0, 0.5),rgba(21, 255, 0, 0.5),rgba(0,0,255,.5));
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track:horizontal {
+            /* 外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。 */
+            background: linear-gradient(to right,rgba(255, 0, 0, 0.5),rgba(255, 145, 0, 0.5),rgba(255, 238, 0, 0.5),rgba(21, 255, 0, 0.5),rgba(0,0,255,.5));
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track-piece {
+              /* 内层轨道，滚动条中间部分（除去）。 */
+            background: linear-gradient(rgba(255, 0, 0, 1),rgba(255, 145, 0, 1),rgba(255, 238, 0, 1),rgba(21, 255, 0, 1),rgba(0,0,255,1));              
+              display: none;
+        }
+        ::-webkit-scrollbar-corner {
+            /* 边角 */
+            display: none;
+        }
+        ::-webkit-resizer {
+            /* 定义右下角拖动块的样式 */
+            display: none;
+        }
+        .box2 {
+            height: 1000px;
+            width: 200%;
+            background-color: #343f92;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box2"></div>
+    </div>
+</body>
+</html>

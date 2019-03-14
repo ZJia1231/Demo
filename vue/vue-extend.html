@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <div id="app">
+            <new></new>
+            <panda here='china'></panda>
+        </div>
+    <script>
+        Vue.component('new',{
+            template:`<p>test1</p>`,
+        })
+        var app = new Vue({
+            el:'#app',
+            components: {
+                'panda': {
+                    template:`<div>panda from {{here}}</div>`,
+                    props: ['here'],
+                }
+            },
+        });
+    </script>
+    </body>   
+</html>

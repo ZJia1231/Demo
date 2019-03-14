@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+<body>
+    <div id="app">
+        <p>${num}</p>
+        <button @click='add'>add</button>
+    </div>
+<script>
+    var extendObj = {
+        updated: function() {
+            console.log('extends')
+        }
+    }
+    new Vue({
+        el:'#app',
+        data: {
+            num:1,
+        },
+        methods: {
+            add:function() {
+                this.num++;
+            }
+        },
+        extends: extendObj,
+        delimiters:['${','}']
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .counter {
+        counter-reset: test 23;
+        font-size: 12px;
+        counter-increment: test 20;
+    }
+    .counter::after {
+        content: counter(test);
+    }
+</style>
+<body>
+    <p class="counter"></p>
+</body>
+</html>

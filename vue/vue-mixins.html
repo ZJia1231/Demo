@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{num}}</p>
+        <button @click='add'>add</button>
+    </div>
+<script>
+    var addConsole= {
+        updated: function() {
+            console.log('数据发生变化'+this.num);
+        }
+    };
+    Vue.mixin({
+        updated: function() {
+            console.log('666666')
+        }
+    })
+    new Vue({
+        el:'#app',
+        data: {
+            num: 1,
+        },
+        methods: {
+            add: function() {
+                this.num++;
+            }
+        },
+        updated:function() {
+            console.log('surprise!')
+        },
+        mixins:[addConsole],
+    })
+</script> 
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html {
+            overflow-y: scroll;
+        }
+        :root {
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        :root body {
+            position: absolute;
+        }
+        body {
+            width: 100vw;
+            overflow: hidden;
+        }
+        .box {
+            background-color: #f23845;
+            height: 600px;
+            text-align: center;
+        }
+        .box p {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">这里有一些居中的字
+        <p>这里有显示在最右边的字</p>
+    </div>
+</body>
+</html>

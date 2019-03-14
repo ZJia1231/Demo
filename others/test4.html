@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+            margin: 7px;
+            padding: 30px;
+            border: 2px solid #000;
+            background: #ff3253;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+<script>
+    var div = document.querySelector('div');
+    console.log('offsetHeight=height+margin+padding:  '+div.offsetHeight);
+    console.log('offsetWidth=width+margin+padding:  '+div.offsetWidth);
+    console.log('clientHeight=height+padding   '+div.clientHeight);
+    console.log('clientWidth=height+padding   '+div.clientWidth);    
+    console.log(div.scrollHeight);
+    
+</script>
+</body>
+</html>

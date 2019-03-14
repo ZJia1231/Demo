@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">get data</button>
+<script>
+    var btn = document.querySelector('#btn');
+    btn.addEventListener('click',function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET','http://rapapi.org/mockjsdata/28887/123',true);
+        xhr.send();
+        xhr.onreadystatechange = function (res) {
+            if (xhr.readyState==4) {
+                var data = JSON.parse(xhr.responseText);
+                console.log(data.username);
+                var img = new Image();
+                img.src='1.jpg'
+            }
+            
+        }
+        
+        
+    })
+</script>
+</body>
+</html>

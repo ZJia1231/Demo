@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #star-five {
+            margin: 50px 0;
+            position: relative;
+            display: block;
+            width: 0px;
+            height: 0px;
+            border-right: 40px solid transparent;
+            border-bottom: 30px solid yellow;
+            border-left: 40px solid transparent;
+        }
+
+        #star-five:before {
+            border-bottom: 30px solid yellow;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            position: absolute;
+            height: 0;
+            width: 0;
+            top: -20px;
+            left: -25px;
+            display: block;
+            content: '';
+            -webkit-transform: rotate(-35deg);
+            -moz-transform: rotate(-35deg);
+            -ms-transform: rotate(-35deg);
+            -o-transform: rotate(-35deg);
+
+        }
+
+        #star-five:after {
+            position: absolute;
+            display: block;
+            top: 0px;
+            left: -40px;
+            width: 0px;
+            height: 0px;
+            border-right: 40px solid transparent;
+            border-bottom: 30px solid yellow;
+            border-left: 40px solid transparent;
+            -webkit-transform: rotate(-75deg);
+            -moz-transform: rotate(-75deg);
+            -ms-transform: rotate(-75deg);
+            -o-transform: rotate(-75deg);
+            content: '';
+        }
+    </style>
+</head>
+
+<body>
+    <div id="star-five"></div>
+    <script>
+        let box = document.querySelector('#star-five');
+        function flash() {
+            let myAnimation = box.animate([
+                { left: Math.random() * 500 + 'px', top: Math.random() * 500 + 'px', transform: 'rotate(0)', opacity: 0 },
+                { left: Math.random() * 500 + 'px', top: Math.random() * 500 + 'px', transform: 'rotate(360deg)', opacity: 1 },
+                { left: Math.random() * 500 + 'px', top: Math.random() * 500 + 'px', transform: 'rotate(0)', opacity: 0 },
+            ], {
+                    easing: 'ease-in',
+                    duration: 2000,
+                    fill: 'forwards',
+                    iterations: 1
+                })
+            myAnimation.onfinish = () => {
+                arguments.callee();
+            }
+        }
+        flash();
+    // let btn = document.querySelector('#btn');
+    // btn.onclick = ()=> {
+    //     // myAnimation.cancel();
+
+    //     // myAnimation.finish();
+
+    //     // if (myAnimation.playState == 'paused') {
+    //     //     myAnimation.play();
+    //     // }
+    //     // else {
+    //     //     myAnimation.pause();
+    //     // }
+
+    //     // myAnimation.reverse();
+
+    // }
+    // myAnimation.oncancel = ()=>{
+    //     alert('cancel')
+    // }
+    </script>
+</body>
+
+</html>

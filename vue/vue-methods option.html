@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{a}}</p>
+        <button @click="add(1)">Add</button>
+        <p><btn @click.native='add(3)'></btn></p>
+    </div>
+    <script>
+    var btn = {
+        template: `<button>组件APP</button>`
+    };
+        new Vue({
+            el:'#app',
+            data: {
+                a:1, 
+            },
+            methods: {
+                add: function(num) {
+                    if (num != '') {
+                        this.a +=num;
+                    }
+                    else {
+                        this.a++;
+                    }
+                }
+            },
+            components: {
+                'btn':btn,
+            }
+        })
+    </script>
+</body>
+</html>

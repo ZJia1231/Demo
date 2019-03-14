@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="example">
+        <a href="#name" title="name">name</a>
+        <a href="#age" title="age">age</a>
+    </p>
+    <script>
+        (function (window) {
+
+            // 如果浏览器不支持原生实现的事件，则开始模拟，否则退出。
+            if ("onhashchange" in window.document.body) {
+                console.log('onhashchange');
+                return;
+            }
+
+            var location = window.location,
+                oldURL = location.href,
+                oldHash = location.hash;
+
+            // 每隔100ms检查hash是否发生变化
+            setInterval(function () {
+                var newURL = location.href,
+                    newHash = location.hash;
+
+                // hash发生变化且全局注册有onhashchange方法（这个名字是为了和模拟的事件名保持统一）；
+                if (newHash != oldHash && typeof window.onhashchange === "function") {
+                    // 执行方法
+                    window.onhashchange({
+                        type: "hashchange",
+                        oldURL: oldURL,
+                        newURL: newURL
+                    });
+
+                    oldURL = newURL;
+                    oldHash = newHash;
+                }
+            }, 100);
+        })(window);
+        // window.onhashchange 原本为null 需要自己定义一个function
+        window.onhashchange = function (e) {
+            console.log(e);
+            console.log('yeah!');
+        }
+    </script>
+</body>
+
+</html>

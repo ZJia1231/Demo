@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        background-color: violet;
+        height: 100px;
+        margin: 20px auto;
+        width: 100px;
+        min-width: 0;        
+        min-height: 0;        
+        transition: min-height 1s;
+        transition: min-width 1s;
+    }
+    .box:hover {
+        min-width: 300px;        
+        min-height: 300px;        
+    }
+</style>
+<body>
+    <div class="box">
+    </div>
+<!-- <script>
+    var box = document.querySelector('.box');
+    box.style.minWidth = '300px';
+    box.style.minHeight = '300px';
+    console.log(box.style.minWidth);
+    console.log(box.style.minHeight);
+        
+</script> -->
+</body>
+</html>

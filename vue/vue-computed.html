@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{newPrice}}</p>
+        <ul>
+            <li v-for='item in reversNews'>
+                {{item.title}} + {{item.date}}
+            </li>
+        </ul>
+    </div>
+<script>
+    var newsList = [
+        {
+            title:'this is a title1',
+            date:'1.1.1'
+        },
+        {
+            title:'this is a title2',
+            date:'1.1.2'
+        },
+        {
+            title:'this is a title3',
+            date:'1.1.3'
+        },
+        {
+            title:'this is a title4',
+            date:'1.1.4'
+        },
+    ];
+   new Vue({
+        el: '#app',
+        data: {
+            price:100,
+            newsList: newsList,
+        },
+        computed: {
+            newPrice: function() {
+                return this.price = '$' +this.price + '元';
+            },
+            reversNews: function() {
+                return this.newsList.reverse();
+            }
+        }
+   })
+</script>
+</body>
+</html>

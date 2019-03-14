@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {};
+        Object.defineProperty(obj, 'val', {
+            value: '123',
+            // configurable: true,
+            // writable:true
+            // enumerable: true,
+            // set: function (newVal) {  // failure
+            //     return newVal + '1';
+            // },
+            // get:function (a,b) {  // failure
+            //     console.log(a);
+            //     console.log(b);
+            //     return a;
+            // }
+        })
+        // delete obj.val
+        obj.val = '233';
+        console.log(obj);
+        // for (let i in obj) {
+        //     console.log(i);
+        //     console.log(obj[i]);
+
+        // }
+    </script>
+</body>
+
+</html>
